@@ -1,0 +1,6 @@
+CREATE TABLE ingredients(
+    _id INT AUTO_INCREMENT PRIMARY KEY,
+    recipe_id VARCHAR(36),
+    name VARCHAR(250) NOT NULL,
+    FOREIGN KEY (recipe_id) REFERENCES recipes (_id) ON DELETE CASCADE
+)ENGINE=InnoDB;

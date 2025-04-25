@@ -1,0 +1,31 @@
+const express = require("express");
+const router = express.Router();
+const ctrl_recipe = require("../controllers/ctrl_recipe");
+const { uploadRecipe } = require("../middlewares/multer-config");
+const auth = require("../middlewares/auth");
+
+router.get("/", ctrl_recipe.getRecipes);
+router.get("/allMyRecipes/:userId", auth, ctrl_recipe.allMyRecipes);
+router.get("/getCountOfRecipesByUserId/:userId", ctrl_recipe.getCountOfRecipesByUserId);
+router.get("/:id", ctrl_recipe.getOneRecipe);
+router.get("/amITheOwnerOfTheRecipe/:recipeId", auth, ctrl_recipe.amITheOwnerOfTheRecipe);
+router.get("/getMostFavRecipe/:userId", ctrl_recipe.getMostFavRecipe);
+router.get("/getRecipesByResearch/:research", ctrl_recipe.getRecipesByResearch);
+router.post("/:id/getTagId", ctrl_recipe.getTagId);
+router.post("/", auth, uploadRecipe, ctrl_recipe.createRecipe);
+router.post("/:id/ingredients", auth, ctrl_recipe.createIngredient);
+router.post("/:id/steps", auth, ctrl_recipe.createStep);
+router.post("/:id/tags", auth, ctrl_recipe.createTag);
+router.put("/:id/ingredients/:ingredientId", auth, ctrl_recipe.updateIngredient);
+router.put("/:id/steps/:stepId", auth, ctrl_recipe.updateStep);
+router.put("/:id/tags/:tagId", auth, ctrl_recipe.updateTag);
+router.delete("/:id/deleteTagsFromRecipe", auth, ctrl_recipe.deleteTagsFromRecipe);
+router.delete("/:id/deleteIngredientsFromRecipe", auth, ctrl_recipe.deleteIngredientsFromRecipe);
+router.delete("/:id/deleteStepsFromRecipe", auth, ctrl_recipe.deleteStepsFromRecipe);
+router.delete("/:id/ingredients/:ingredientId", auth, ctrl_recipe.deleteIngredient);
+router.delete("/:id/steps/:stepId", auth, ctrl_recipe.deleteStep);
+router.delete("/:id/tags/:tagId", auth, ctrl_recipe.deleteTag);
+router.put("/:id", auth, uploadRecipe, ctrl_recipe.updateRecipe);
+router.delete("/:id", auth, ctrl_recipe.deleteRecipe);
+
+module.exports = router;

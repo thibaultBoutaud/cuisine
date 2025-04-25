@@ -1,0 +1,15 @@
+CREATE TABLE messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    sender_id VARCHAR(36) NOT NULL,
+    receiver_id VARCHAR(36) NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+ALTER TABLE messages
+ADD CONSTRAINT fk_sender
+FOREIGN KEY (sender_id) REFERENCES users(_id)
+ON DELETE CASCADE,
+ADD CONSTRAINT fk_receiver
+FOREIGN KEY (receiver_id) REFERENCES users(_id)
+ON DELETE CASCADE;

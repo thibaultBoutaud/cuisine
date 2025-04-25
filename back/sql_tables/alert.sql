@@ -1,0 +1,5 @@
+CREATE TABLE alert(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    sender_id VARCHAR(36) NOT NULL,
+    receiver_id VARCHAR(36) NOT NULL
+)ENGINE=InnoDB;

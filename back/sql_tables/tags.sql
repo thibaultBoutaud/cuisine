@@ -1,0 +1,6 @@
+CREATE TABLE tags(
+    _id INT AUTO_INCREMENT PRIMARY KEY,
+    recipe_id VARCHAR(36),
+    tag VARCHAR(50),
+    FOREIGN KEY (recipe_id) REFERENCES recipes (_id) ON DELETE CASCADE
+)ENGINE=InnoDB;
