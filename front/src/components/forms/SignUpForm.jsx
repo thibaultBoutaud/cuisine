@@ -44,7 +44,6 @@ export function SignUpForm() {
 
     return (
         <form onSubmit={(e) => handleSubmit(e)}>
-            {console.log(answer)}
             <div>
                 <label>Nom:</label>
                 <input type="text" name="name" placeholder="Name*" />

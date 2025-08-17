@@ -42,7 +42,6 @@ export function Focus() {
         setRecipe(recipeWidhtFavorites);
         const resIamTheOwnerOfTheRecipe = await amITheOwnerOfTheRecipe(recipeRe._id)
         if (resIamTheOwnerOfTheRecipe.ok) setAmITheOwner(true);
-        console.log(resIamTheOwnerOfTheRecipe);
     }
 
     async function getOneRecipe() {

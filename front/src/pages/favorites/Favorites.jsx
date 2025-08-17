@@ -14,10 +14,12 @@ export function Favorites() {
     async function controller() {
         const res = await getFavorites();
         const favIds = res.data.favorites;
-        if (favIds.length <= 0){
-            setRecipes([]);
-            return;
-        }
+        if (!favIds) return;
+            if (favIds.length <= 0) {
+                setRecipes([]);
+                return;
+            }
+        
         const recipesIds = favIds.map((ids) => ids._id);
 
         const favoritesRecipes = (await Promise.all(
@@ -33,7 +35,7 @@ export function Favorites() {
         setRecipes(favoritesRecipes);
     }
 
-  
+
 
 
     return (
